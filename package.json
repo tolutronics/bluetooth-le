@@ -38,7 +38,7 @@
     "@types/web-bluetooth": "^0.0.20"
   },
   "devDependencies": {
-    "@capacitor/android": "^7.0.0",
+    "@capacitor/android": "^7.4.3",
     "@capacitor/cli": "^7.0.0",
     "@capacitor/core": "^7.0.0",
     "@capacitor/docgen": "^0.3.0",
