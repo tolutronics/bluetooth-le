@@ -34,6 +34,7 @@
 This is a Capacitor plugin for Bluetooth Low Energy. It supports the web, Android and iOS.
 
 **Note**: This is a fork of the [@capacitor-community/bluetooth-le](https://github.com/capacitor-community/bluetooth-le) plugin. The fork was created to:
+
 - Maintain active development and timely updates
 - Add custom features and improvements specific to Tolutronics projects
 - Ensure compatibility with the latest Capacitor versions
@@ -60,13 +61,16 @@ This plugin only supports Bluetooth **Low Energy**, not Bluetooth serial / class
 ## Recent Updates
 
 ### Version 7.2.0 (Latest)
+
 - **Enhanced Android bonding**: Abort `startNotifications` on Android when bonding is cancelled, improving the connection flow stability
 - **Configurable notification timeout**: Unified and exposed timeout configuration for `startNotifications` across all platforms, allowing better control over notification setup timing
 
 ### Version 7.1.1
+
 - **Improved filtering**: Restored the ability to filter devices by name only, without requiring additional filters
 
 ### Version 7.1.0
+
 - **Manufacturer data filtering**: Added support for manufacturer data in scan filters, enabling more precise device discovery
 - **Stability improvements**: Fixed callback handling to prevent potential race conditions during rapid BLE operations
 
@@ -356,15 +360,17 @@ export async function scanWithManufacturerData(): Promise<void> {
   try {
     await BleClient.initialize();
 
-    const companyId = 0x004C; // Apple Inc.
+    const companyId = 0x004c; // Apple Inc.
     const dataPrefix = new Uint8Array([0x02, 0x15]); // iBeacon prefix
 
     await BleClient.requestLEScan(
       {
-        manufacturerData: [{
-          companyIdentifier: companyId,
-          dataPrefix: dataPrefix,
-        }],
+        manufacturerData: [
+          {
+            companyIdentifier: companyId,
+            dataPrefix: dataPrefix,
+          },
+        ],
       },
       (result) => {
         console.log('found device with matching manufacturer data', result);
@@ -400,7 +406,7 @@ export async function startNotificationsWithTimeout(deviceId: string): Promise<v
       (value) => {
         console.log('heart rate updated', value);
       },
-      { timeout: 15000 } // Custom timeout in milliseconds
+      { timeout: 15000 }, // Custom timeout in milliseconds
     );
   } catch (error) {
     console.error('Failed to start notifications:', error);
